@@ -31,15 +31,21 @@ public class DriverClass {
 		
 		// Create threads		
 		Runnable warehouseTask = () -> {
+			System.out.println("Warehouse restocking...");
 			inventory.addStock(productId, warehouseQty);
+			System.out.println("Warehouse restock completed.");
 		};
 			
 		Runnable supplierTask = () -> {
+			System.out.println("Supplier delivering stock...");
 			inventory.addStock(productId, supplierQty);				
+			System.out.println("Supplier delivery completed.");
 		};
 			
 		Runnable salesTask = () -> {
+			System.out.println("Processing customer order...");
 			inventory.removeStock(productId, orderQty);
+			System.out.println("Customer order processed.");	
 		};
 			
 		// Create three threads for the tasks
@@ -71,7 +77,10 @@ public class DriverClass {
 			e.printStackTrace();			
 		}
 
-		System.out.println("Inventory management completed");		
+		// Stop the inventory system
+		inventory.stopSystem();
+
+		System.out.println("Inventory management completed");			
 	}
 }
 	

@@ -44,6 +44,10 @@ public class InventoryMgmt {
 		}
 		return false;
 	}
+
+	public synchronized void stopSystem() {
+		System.out.println("Inventory system stopped.");
+	}
 }
 
 
